@@ -12,7 +12,8 @@
     "dev:front": "run-p webpack:dev start",
     "dev:full": "run-p webpack:dev nodemon",
     "dev:back": "nodemon index.js",
-    "eslint": "eslint"
+    "eslint": "eslint",
+    "heroku-postbuild": "run-s clean webpack:prod"
   },
   "keywords": [],
   "author": "",
