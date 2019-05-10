@@ -8,7 +8,7 @@ class Header extends Component {
     }
 
     test = () => {
-        console.log('test');
+        console.log('test')
     }
 
     render() {

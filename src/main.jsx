@@ -7,16 +7,16 @@ import './style.css'
 
 import store from './redux/store'
 
-import Header from './components/Header'
+import App from './components/App'
 
-const App = () => {
+const Main = () => {
     return (
         <Provider store={store}>
             <Router>
-                <Header />
+                <App />
             </Router>
         </Provider>
     )
 }
 
-render(<App />, document.getElementById('root'))
+render(<Main />, document.getElementById('root'))

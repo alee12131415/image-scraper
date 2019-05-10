@@ -26,7 +26,7 @@ module.exports = {
     },
     plugins: [
         new HtmlWebpackPlugin({
-            title: 'React Express SPA Boilerplate',
+            title: 'Image Scraper',
             filename: './index.html',
             template: './src/index.html'
         })
