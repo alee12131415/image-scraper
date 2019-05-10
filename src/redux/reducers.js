@@ -34,6 +34,16 @@ const view = (state = 'all', action) => {
     }
 }
 
+const scrapes = (state = [], action) => {
+    switch(action.type) {
+        case a.UPDATE_SCRAPES:
+            return action.payload
+        default:
+            return state
+    }
+}
+
 export default combineReducers ({
-    view
+    view,
+    scrapes
 })

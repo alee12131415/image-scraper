@@ -5,7 +5,7 @@ const Navbar = () => {
         <nav>
             <span className={'brand'}>Image Scraper</span>
             <div className='menu'>
-                <p className="pseudo button">Start Scraping</p>
+                <label className="pseudo button" htmlFor='startScrapeModal'>Start Scraping</label>
             </div>
         </nav>
     )

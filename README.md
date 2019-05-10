@@ -13,10 +13,10 @@ TODO: Backend
 
 * ~~Utilize a database (PSQL)~~
 
-* Able to scrape http and https
+* ~~Able to scrape http and https~~
 
 TODO: Frontend
-* List of URL scrapes (in progress and complete)
+* ~~List of URL scrapes (in progress and complete)~~
 
 * Clicking on a scrapes shows details
   * url
@@ -25,3 +25,10 @@ TODO: Frontend
   * largest image (even if in progress)
 
 * text field to add another scrape
+
+API
+
+GET /api/scrape/:id
+GET /api/scrape?ids=comma,seperated,ids
+
+POST /api/scrape json {"url": String|String[]}

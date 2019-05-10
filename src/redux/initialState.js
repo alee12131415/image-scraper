@@ -1,3 +1,4 @@
 export default {
-    view: 'all'
+    view: 'all',
+    scrapes: []
 }

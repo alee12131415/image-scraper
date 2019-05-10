@@ -1,12 +1,7 @@
 import React, {Component} from 'react'
+import {connect} from 'react-redux'
 
-import List from './List'
-
-const sections = ['section 1', 'section 2']
-const rows = [
-    ['hello', 0],
-    ['world', 1]
-]
+import ScrapeList from './ScrapeList'
 
 /**
  * props
@@ -17,14 +12,22 @@ class Section extends Component {
         super()
     }
 
+
+
     render() {
         return (
             <div>
-                <h1>{this.props.title}</h1>
-                <List sections={sections} rows={rows} className='warning' />
+                <h1>{this.props.view.toUpperCase()}</h1>
+                <ScrapeList />
             </div>
         )
     }
 }
 
-export default Section
+const mapS2P = (state) => {
+    return {
+        view: state.view
+    }
+}
+
+export default connect(mapS2P)(Section)

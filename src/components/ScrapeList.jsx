@@ -1,18 +1,58 @@
 import React, {Component} from 'react'
+import {connect} from 'react-redux'
 
 import List from './List'
 
+const sections = ['id', 'url', 'status', 'time']
+
 /**
- * TODO:
+ * props:
+ *  - getScrapes
  */
 class ScrapeList extends Component {
-    render() {
-        return (
-            <div>
+    constructor() {
+        super()
+        this.state = {
+            isLoaded: false
+        }
+    }
 
-            </div>
+    getHeaderClass = (view) => {
+        switch(view) {
+            case 'complete':
+                return 'success'
+            case 'in progress':
+                return 'warning'
+            case 'failed':
+                return 'error'
+            default:
+                return 'primary'
+        }
+    }
+
+    render() {
+        // if (this.props.scrapes.length < 1) {
+        //     return <h1>Nothing to list</h1>
+        // }
+
+        const headerClass = this.getHeaderClass(this.props.view)
+
+        const rows = this.props.scrapes.map(({id, url, status, time_start}) => {
+            const d = new Date(parseInt(time_start))
+            return [id, url, status, d.toUTCString()]
+        })
+        
+        return (
+            <List sections={sections} rows={rows} headerClass={headerClass} />
         )
     }
 }
 
-export default ScrapeList
+const mapS2P = (state) => {
+    return {
+        view: state.view,
+        scrapes: state.scrapes
+    }
+}
+
+export default connect(mapS2P)(ScrapeList)

@@ -2,7 +2,8 @@ const actions = {
     VIEW_ALL: 'VIEW_ALL',
     VIEW_COMPLETE: 'VIEW_COMPLETE',
     VIEW_IN_PROGRESS: 'VIEW_IN_PROGRESS',
-    VIEW_FAILED: 'VIEW_FAILED'
+    VIEW_FAILED: 'VIEW_FAILED',
+    UPDATE_SCRAPES: 'UPDATE_SCRAPES'
 }
 
 // export const updateTitle = (title) => {
@@ -36,8 +37,13 @@ export const updateView = (view) => {
             break
     }
 
+    return {type}
+}
+
+export const updateScrapes = (scrapes) => {
     return {
-        type
+        type: actions.UPDATE_SCRAPES,
+        payload: scrapes
     }
 }
 

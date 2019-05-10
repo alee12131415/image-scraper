@@ -63,9 +63,32 @@ exports.createScrape = async (id, url, time) => {
     }
 }
 
+/**
+ * Return information on a single scrape
+ * 
+ * @param {String} id
+ */
 exports.readScrape = async (id) => {
     try {
         const {rows} = await dbClient.query(`select ${SCRAPE_ID}, ${SCRAPE_URL}, ${SCRAPE_STATUS}, ${SCRAPE_TIME}, ${SCRAPE_RESULT} from ${TABLE_SCRAPES} where ${SCRAPE_ID}=$1`, [id])
+        return rows[0]
+    } catch (err) {
+        return null
+    }
+}
+
+exports.readScrapesByStatus = async (status) => {
+    try {
+        const {rows} = await dbClient.query(`select ${SCRAPE_ID}, ${SCRAPE_URL}, ${SCRAPE_STATUS}, ${SCRAPE_TIME}, ${SCRAPE_RESULT} from ${TABLE_SCRAPES} where ${SCRAPE_STATUS}=$1`, [status])
+        return rows
+    } catch (err) {
+        return null
+    }
+}
+
+exports.readAllScrapes = async () => {
+    try {
+        const {rows} = await dbClient.query(`select ${SCRAPE_ID}, ${SCRAPE_URL}, ${SCRAPE_STATUS}, ${SCRAPE_TIME}, ${SCRAPE_RESULT} from ${TABLE_SCRAPES}`)
         return rows
     } catch (err) {
         return null
