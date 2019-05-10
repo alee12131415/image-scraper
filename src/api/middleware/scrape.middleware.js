@@ -22,7 +22,7 @@ const scrapeImages = async (id, url) => {
     try {
         // Get html data using a headless browser
         // This way we can get rendered pages over raw html
-        const htmlData = await puppeteer.launch()
+        const htmlData = await puppeteer.launch({args: ['--no-sandbox']}) // no-sandbox for puppeteer heroku buildpack fix
             .then((browser) => {
                 return browser.newPage()
             })
