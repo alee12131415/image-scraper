@@ -13,7 +13,7 @@
     "dev:full": "run-p webpack:dev nodemon",
     "dev:back": "nodemon index.js",
     "eslint": "eslint",
-    "heroku-postbuild": "webpack:prod"
+    "heroku-postbuild": "run-s webpack:prod"
   },
   "keywords": [],
   "author": "",
