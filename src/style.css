@@ -9,6 +9,18 @@
     margin: 0px 10px;
 }
 
+.scrapeDetail {
+    display: inline-block;
+}
+
+.scrapeDetailHeader {
+    padding-right: 10px;
+}
+
 textarea {
     resize: none;
+}
+
+img {
+    max-width: 100%;
 }

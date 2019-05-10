@@ -1,6 +1,10 @@
 import React, {Component} from 'react'
 
+import ScrapeRow from './ScrapeRow'
+
 /**
+ * No longer agnostic, specific rows are now tied to ScrapeRow component
+ * 
  * props:
  *  - sections
  *  - rows
@@ -28,11 +32,7 @@ class List extends Component {
             <tbody>
                 {this.props.rows.map((item) => {
                     return (
-                        <tr key={item[0]}>
-                            {item.map((i) => {
-                                return <td key={item[0] + i}>{i}</td>
-                            })}
-                        </tr>
+                        <ScrapeRow key={item[0]} scrapeInfo={item} />
                     )
                 })}
             </tbody>

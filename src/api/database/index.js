@@ -118,7 +118,7 @@ exports.updateScrape = async (id, status, result = '') => {
  */
 exports.deleteScrape = async (id) => {
     try {
-        await dbClient.Client.query(`delete from ${TABLE_SCRAPES} where ${SCRAPE_ID}=$1`, [id])
+        await dbClient.query(`delete from ${TABLE_SCRAPES} where ${SCRAPE_ID}=$1`, [id])
         return {id, status: true}
     } catch (err) {
         return {id, status: false}

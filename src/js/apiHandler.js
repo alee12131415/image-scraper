@@ -1,5 +1,9 @@
 import axios from 'axios'
 
+import store from '../redux/store'
+
+import {updateScrapes} from '../redux/actions'
+
 /**
  * @param {String} endpoint GET /api/scrape/THIS_HERE
  * @returns {Promise<Object[]|boolean>} false if failed
@@ -42,10 +46,37 @@ export const postScrapes = (scrapes) => {
         }
     })
         .then((res) => {
-            console.log(res.data.result)
             return res.data.result
         })
         .catch(() => {
             return false
+        })
+}
+
+export const deleteScrape = (id) => {
+    return axios({
+        method: 'delete',
+        url: '/api/scrape/' + id,
+    })
+        .then((res) => {
+            return res.data.result
+        })
+        .catch(() => {
+            return false
+        })
+}
+
+export const updateScrapesList = () => {
+    let view = store.getState().view
+
+    if (view === 'in progress') {
+        view = 'in_progress'
+    }
+
+    getConditionalScrapes(view)
+        .then((res) => {
+            if (res !== false) {
+                store.dispatch(updateScrapes(res))
+            }
         })
 }

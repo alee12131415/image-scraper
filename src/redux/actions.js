@@ -6,13 +6,6 @@ const actions = {
     UPDATE_SCRAPES: 'UPDATE_SCRAPES'
 }
 
-// export const updateTitle = (title) => {
-//     return {
-//         type: actions.UPDATE_TITLE,
-//         payload: title
-//     }
-// }
-
 /**
  * Updated view state
  * @param {String} view 'all' 'complete' 'in progress' 'failed'

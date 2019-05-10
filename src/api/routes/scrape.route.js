@@ -1,7 +1,7 @@
 const router = require('express').Router()
 const jsonParser = require('body-parser').json()
 
-const {getConditionalScrape, getSingleScrape, getMultipleScrapes, getAllScrapes, postScrape} = require('../middleware/scrape.middleware')
+const {getConditionalScrape, getSingleScrape, getMultipleScrapes, getAllScrapes, postScrape, deleteScrape} = require('../middleware/scrape.middleware')
 
 router.get('/all', getAllScrapes)
 router.get('/complete', getConditionalScrape('Complete'))
@@ -12,6 +12,6 @@ router.get('/', getMultipleScrapes)
 
 router.post('/', jsonParser, postScrape)
 
-router.delete('/:id')
+router.delete('/:id', deleteScrape)
 
 module.exports = router

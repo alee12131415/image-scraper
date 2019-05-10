@@ -1,7 +1,8 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 
-// TODO: update views
+// NO LONGER USED
+
 class Viewport extends Component {
     getView = (view) => {
         switch(view) {
