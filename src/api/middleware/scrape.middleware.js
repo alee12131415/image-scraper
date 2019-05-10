@@ -75,20 +75,22 @@ const scrapeImages = async (id, url) => {
         // Put first image into entry
         if (parsedImages.length > 0) {
             updateScrape(id, 'In Progress', parsedImages.source)
+
+            // Get largest image {area, scource}
+            const answer = parsedImages.reduce((prev, curr) => {
+                // When a next largest image is found, update the database entry
+                if (curr.area > prev.area) {
+                    updateScrape(id, 'In Progress', curr.source)
+                    return curr
+                } else {
+                    return prev
+                }
+            })
+            updateScrape(id, 'Complete', answer.source)
+        } else {
+            updateScrape(id, 'Complete', '')
         }
 
-        // Get largest image {area, scource}
-        const answer = parsedImages.reduce((prev, curr) => {
-            // When a next largest image is found, update the database entry
-            if (curr.area > prev.area) {
-                updateScrape(id, 'In Progress', curr.source)
-                return curr
-            } else {
-                return prev
-            }
-        })
-
-        updateScrape(id, 'Complete', answer.source)
     } catch (err) {
         updateScrape(id, 'Failed', err.message) // Should commit error message?
     }
