@@ -1,5 +1,4 @@
 # image-scraper
-TODO: Backend
 
 * CRUD services for jobs
   * ~~Each job needs url to scrape and results of job-~~
